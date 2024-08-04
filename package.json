@@ -4,6 +4,16 @@
   "main": "dist/index.js",
 	"types": "./dist/index.d.ts",
   "license": "MIT",
+  "author": {
+    "name": "Ross Libby",
+    "email": "dev@rosslibby.com",
+    "url": "https://rosslibby.com",
+    "github": "https://github.com/rosslibby"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rosslibby/react-waveform"
+  },
   "scripts": {
     "build": "tsup",
     "lint": "tsc"
