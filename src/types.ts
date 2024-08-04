@@ -6,6 +6,13 @@ export type ConfigColors = {
   past: string
 }
 
+export type WaveformConfig = {
+  radius: string
+  activeHeight: string
+  gap: string
+  colors: Partial<ConfigColors>
+}
+
 export interface ConfigOptions {
   colors: ConfigColors
   radius: string

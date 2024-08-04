@@ -1,5 +1,5 @@
 import { useContext, useRef } from 'react'
-import { AudioTrack, ConfigOptions } from '../types'
+import { AudioTrack, WaveformConfig } from '../types'
 import { useWave } from './hooks'
 import { Segment } from './segment'
 import { waveformCtx } from '../context'
@@ -8,7 +8,7 @@ import { waveStyles } from '../styles'
 type WaveProps = {
   columns?: number
   track: AudioTrack
-  options?: Partial<ConfigOptions>
+  options?: Partial<WaveformConfig>
 }
 
 export const Waveform = ({
