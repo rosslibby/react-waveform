@@ -1,30 +1,30 @@
 import { useCallback, useContext, useEffect, useState } from 'react'
 import { generateSegments } from '../../utils'
-import { AudioSample, Metadata, PlayState } from '../../types'
+import { AudioTrack, Metadata, PlayState } from '../../types'
 import { waveformCtx } from '../../context'
 
-export const useWave = (sample: AudioSample, count: number = 60) => {
+export const useWave = (track: AudioTrack, count: number = 60) => {
   const { playState, _: fns } = useContext(waveformCtx)
-  const { setMetadata, setSamples } = fns
+  const { setMetadata, setTracks } = fns
   const [activeIndex, setActiveIndex] = useState<number>(0)
   const [duration, setDuration] = useState<number>(0)
   const [segments, setSegments] = useState<number[]>([])
-  const isCurrent = playState.id === sample.id
+  const isCurrent = playState.id === track.id
   const isCurrentPlaying = isCurrent && playState.playing
   const createSegments = useCallback(async () => {
-    const { duration, segments } = await generateSegments(sample.src, count)
+    const { duration, segments } = await generateSegments(track.src, count)
     setDuration(duration)
     setSegments(segments)
-  }, [count, sample, setDuration, setSegments, setSamples])
+  }, [count, track, setDuration, setSegments, setTracks])
 
-  // Track the current segment of the sample being played
+  // Track the current segment of the track being played
   const updateActiveIndex = useCallback(() => {
     setActiveIndex((prev: number) => {
       return prev + 1
     })
   }, [setActiveIndex])
 
-  // Set active index to 0 when the current sample has finished playing
+  // Set active index to 0 when the current track has finished playing
   const resetActiveIndex = useCallback(() => {
     setActiveIndex(0)
   }, [setActiveIndex])
@@ -38,7 +38,7 @@ export const useWave = (sample: AudioSample, count: number = 60) => {
     }))
   }, [setMetadata])
 
-  // Set metadata when sample is armed
+  // Set metadata when track is armed
   useEffect(() => {
     if (isCurrentPlaying) {
       updateMetadata(duration)

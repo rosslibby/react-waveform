@@ -20,7 +20,7 @@ export type ContextFunctions = {
   [key: string]: Function
 }
 
-export interface AudioSample {
+export interface AudioTrack {
   id: number | string
   src: string
 }
@@ -43,8 +43,8 @@ export interface WaveformContext {
   options: ConfigOptions
   playState: PlayState
   loading: boolean
-  samples: AudioSample[]
-  current: AudioSample | null
+  tracks: AudioTrack[]
+  current: AudioTrack | null
   metadata: Metadata
   _: ContextFunctions
 }

@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from 'react'
 import {
   WaveformContext,
-  AudioSample,
+  AudioTrack,
   PlayState,
   Metadata,
   ProviderProps,
@@ -38,7 +38,7 @@ export const waveformCtx = createContext<WaveformContext>({
   options: defaultOptions,
   playState: initialPlayState,
   loading: false,
-  samples: [],
+  tracks: [],
   current: null,
   metadata: initialMetadata,
   _: {},
@@ -51,9 +51,9 @@ export function WaveformProvider({
   const [metadata, setMetadata] = useState<Metadata>(initialMetadata)
   const [playState, setPlayState] = useState<PlayState>(initialPlayState)
   const [loading, setLoading] = useState<boolean>(false)
-  const [samples, setSamples] = useState<AudioSample[]>([])
+  const [tracks, setTracks] = useState<AudioTrack[]>([])
   const [playing, setPlaying] = useState<boolean>(false)
-  const [current, setCurrent] = useState<AudioSample | null>(null)
+  const [current, setCurrent] = useState<AudioTrack | null>(null)
 
   useEffect(() => {
     if (current) {
@@ -72,7 +72,7 @@ export function WaveformProvider({
     metadata,
     playing,
     playState,
-    samples,
+    tracks,
   }
   const fns = {
     setCurrent,
@@ -80,7 +80,7 @@ export function WaveformProvider({
     setMetadata,
     setPlaying,
     setPlayState,
-    setSamples,
+    setTracks,
   }
 
   return (

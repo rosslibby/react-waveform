@@ -8,9 +8,9 @@ npm                               | yarn
 
 # Types
 
-### AudioSample
+### AudioTrack
 ```ts
-interface AudioSample {
+interface AudioTrack {
   id: number | string
   src: string
 }
@@ -78,36 +78,36 @@ export default function App(props: React.ComponentProps) {
 ## Waveform
 ```tsx
 // audio-player.tsx
-import { AudioSample, Waveform } from 'react-waveform-visualizer'
+import { AudioTrack, Waveform } from 'react-waveform-visualizer'
 
-export function AudioPlayer({ sample }: {
-  sample: AudioSample
+export function AudioPlayer({ track }: {
+  track: AudioTrack
 }) {
   return (
-    <Waveform sample={sample} />
+    <Waveform track={track} />
   )
 }
 ```
 `<Waveform />` can take three arguments:
 
-- `sample: AudioSample`
+- `track: AudioTrack`
 - `columns: number` (optional)
 - `options: ConfigOptions` (optional)
 
 argument | description | type
 --- | --- | ---
-`sample` | An object containing the `id` and `src` of the track | `AudioSample`
+`track` | An object containing the `id` and `src` of the track | `AudioTrack`
 `columns` | Specifies the number of segments in the rendered audio wave. Default value is `60` | `number`
 `options` | Optional styling specifications. These options will override any default options or options set in the `WaveformProvider` | `ConfigOptions`
 
 ```tsx
 // custom-audio-player.tsx
-import { AudioSample, ConfigOptions, Waveform } from 'react-waveform-visualizer'
+import { AudioTrack, ConfigOptions, Waveform } from 'react-waveform-visualizer'
 
-export function AudioPlayer({ sample, activeColor, gap }: {
+export function AudioPlayer({ track, activeColor, gap }: {
   activeColor: string,
   gap: string,
-  sample: AudioSample
+  track: AudioTrack
 }) {
   const options: Partial<ConfigOptions> = {
     colors: {
@@ -117,7 +117,7 @@ export function AudioPlayer({ sample, activeColor, gap }: {
   }
 
   return (
-    <Waveform sample={sample} options={options} />
+    <Waveform track={track} options={options} />
   )
 }
 ```
@@ -131,25 +131,25 @@ export function AudioPlayer({ sample, activeColor, gap }: {
 The `useWaveform` hook exposes the following variables and functions:
 name  | description | type | arguments
 ----- | ----------- | ---- | ---------
-`armTrack` | Plays an audio sample from the `samples` array | Function | `id: number \| string`
-`current` | The currently armed track | Object: `AudioSample` |
-`loading` | Status of sample array population | `boolean` |
-`loadSamples` | Populates the `samples` array with a list of audio sources, either replacing the array's contents or appending the passed items to the current array | Function | `samples: AudioSample[]`, `reset: boolean`
+`armTrack` | Plays an audio track from the `tracks` array | Function | `id: number \| string`
+`current` | The currently armed track | Object: `AudioTrack` |
+`loading` | Status of track array population | `boolean` |
+`loadTracks` | Populates the `tracks` array with a list of audio sources, either replacing the array's contents or appending the passed items to the current array | Function | `tracks: AudioTrack[]`, `reset: boolean`
 `metadata` | Data about the currently armed track, such as track duration, time elapsed (while playing) | Object: `Metadata` |
-`samples` | Array of tracks that have been loaded | Object: `AudioSample[]`
+`tracks` | Array of tracks that have been loaded | Object: `AudioTrack[]`
 
-### loadSamples
-The `loadSamples` function takes the following arguments:
-- `samples: AudioSample[]`
+### loadTracks
+The `loadTracks` function takes the following arguments:
+- `tracks: AudioTrack[]`
 - `reset: boolean`
 
 argument | description | type
 --- | --- | ---
-`samples` | Takes an array of objects specifying the audio tracks to be loaded and rendered as waveforms | `AudioSample[]`
-`reset` | Indicates whether the passed `samples` will _replace_ or _be appended to_ the existing array. Default value is `false` | `boolean`
+`tracks` | Takes an array of objects specifying the audio tracks to be loaded and rendered as waveforms | `AudioTrack[]`
+`reset` | Indicates whether the passed `tracks` will _replace_ or _be appended to_ the existing array. Default value is `false` | `boolean`
 
-### samples (argument)
-Each sample in the `samples` array is of type `AudioSample`, which includes two properties:
+### tracks (argument)
+Each track in the `tracks` array is of type `AudioTrack`, which includes two properties:
 - `id: string | number`
 - `src: string`
 
@@ -160,7 +160,7 @@ key | description | type
 
 ```tsx
 import { useEffect } from 'react'
-import { useWaveform, AudioSample, Waveform } from 'react-waveform-visualizer'
+import { useWaveform, AudioTrack, Waveform } from 'react-waveform-visualizer'
 
 // Audio track URLs
 const TRACK_LIST = [
@@ -170,30 +170,30 @@ const TRACK_LIST = [
   'https://free-loops.com/data/mp3/68/c0/af53529e97d928a43d8dd7272ae3.mp3',
 ]
 
-// URLs mapped to an AudioSample array
+// URLs mapped to an AudioTrack array
 const TRACKS = TRACK_LIST.map((url, index: number) => ({
   id: index,
   src: url,
 }))
 
 export function Tracks() {
-  const { loadSamples } = useWaveform()
+  const { loadTracks } = useWaveform()
 
   useEffect(() => {
-    loadSamples(TRACKS) // Load the tracks into the Waveform state
-  }, [loadSamples])
+    loadTracks(TRACKS) // Load the tracks into the Waveform state
+  }, [loadTracks])
 }
 ```
 
 ### armTrack
-`armTrack` plays the specified track through an `<audio>` element in `<WaveformProvider>`. Once a track is armed, any `<Waveform />` whose `sample` `id` matches the `armTrack` `id` will render the audio waveform.
+`armTrack` plays the specified track through an `<audio>` element in `<WaveformProvider>`. Once a track is armed, any `<Waveform />` whose `track` `id` matches the `armTrack` `id` will render the audio waveform.
 
 The `armTrack` function takes only one argument:
 - `id: string | number`
 
 argument | description | type
 --- | --- | ---
-`id` | The `id` comes from the `samples` array, specifying a _loaded_ track for playback and visualization | `string` or `number`
+`id` | The `id` comes from the `tracks` array, specifying a _loaded_ track for playback and visualization | `string` or `number`
 
 ```tsx
 // play-button.tsx
@@ -224,7 +224,7 @@ export function AudioPlayer() {
       {/* current is not null */}
       {current && (
         <div>
-          <AudioPlayer sample={current} />
+          <AudioPlayer track={current} />
           <p>{`Currently playing track #${current.id}`}</p>
         </div>
       )}
@@ -236,8 +236,8 @@ export function AudioPlayer() {
 }
 ```
 
-### samples
-`samples` is an array of all loaded tracks. Samples are of type `AudioSample`.
+### tracks
+`tracks` is an array of all loaded tracks. tracks are of type `AudioTrack`.
 
 ```tsx
 import { useWaveform } from 'react-waveform-visualizer'
@@ -245,15 +245,15 @@ import { AudioPlayer } from './audio-player'
 import { PlayButton } from './play-button'
 
 export function TrackList() {
-  const { samples } useWaveform()
+  const { tracks } useWaveform()
 
   return (
     <ul>
-      {samples.map((sample) => (
-        <li key={sample.id}>
-          <PlayButton id={sample.id} />
-          <span>{`Track ID #${sample.id}`}</span>
-          <AudioPlayer sample={sample} />
+      {tracks.map((track) => (
+        <li key={track.id}>
+          <PlayButton id={track.id} />
+          <span>{`Track ID #${track.id}`}</span>
+          <AudioPlayer track={track} />
         </li>
       ))}
     </li>
@@ -272,7 +272,7 @@ key | description | type
 `ms` | The number of milliseconds elapsed since playback started | `number`
 
 ### `WaveformProvider` (React Context API )
-The `WaveformProvider` maintains the state for all loaded audio samples, as well as play state.
+The `WaveformProvider` maintains the state for all loaded audio tracks, as well as play state.
 
 <br />
 
@@ -296,7 +296,7 @@ root.render(
 
 Any child component of `WaveformProvider` can utilize the `useWaveform` hook and the `<Waveform />` component.
 
-Finally, load samples, arm tracks, and render waveforms using the `useWaveform` hook and the `<Waveform />` component:
+Finally, load tracks, arm tracks, and render waveforms using the `useWaveform` hook and the `<Waveform />` component:
 
 ```json
 // audio-tracks.json
@@ -324,28 +324,28 @@ Finally, load samples, arm tracks, and render waveforms using the `useWaveform` 
 
 ```tsx
 import { useEffect } from 'react';
-import { useWaveform, AudioSample, Waveform } from 'react-waveform-visualizer';
+import { useWaveform, AudioTrack, Waveform } from 'react-waveform-visualizer';
 
 // import audio tracks
 import audioTracks from './track-data.json'
 
 function TrackLibrary() {
-  const { armTrack, current, loadSamples, samples } = useWaveform();
+  const { armTrack, current, loadTracks, tracks } = useWaveform();
 
   // load the tracks into the WaveformProvider context
   useEffect(() => {
-    loadSamples(audioTracks as AudioSample[])
-  }, [loadSamples])
+    loadTracks(audioTracks as AudioTrack[])
+  }, [loadTracks])
 
   return (
     <>
       <main>
         <ul>
           {/* List each track with a "play" button and its respective Waveform */}
-          {samples.map((sample) => (
-            <li key={sample.id}>
-              <button onClick={() => armTrack(sample.id)}>{'▶️'}</button>
-              <Waveform sample={sample} />
+          {tracks.map((track) => (
+            <li key={track.id}>
+              <button onClick={() => armTrack(track.id)}>{'▶️'}</button>
+              <Waveform track={track} />
             </li>
           ))}
         </ul>
@@ -354,7 +354,7 @@ function TrackLibrary() {
         {/* Render the footer Waveform if a track is currently armed */}
         {current && (
           <Waveform
-            sample={current}
+            track={current}
             columns={120}
             options={{
               colors: {
