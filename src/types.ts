@@ -1,11 +1,13 @@
 import { ReactNode } from 'react'
 
-export type ConfigOptions = {
-  colors: {
-    default: string
-    active: string
-    past: string
-  }
+export type ConfigColors = {
+  default: string
+  active: string
+  past: string
+}
+
+export interface ConfigOptions {
+  colors: ConfigColors
   radius: string
   activeHeight: string
   gap: string

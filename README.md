@@ -18,15 +18,17 @@ interface AudioTrack {
 
 ### ConfigOptions
 ```ts
-type ConfigOptions = {
-  colors: {
-    active: string,
-    default: string,
-    past: string,
-  },
-  radius: string,
-  activeHeight: string,
-  gap: string,
+type ConfigColors = {
+  default: string
+  active: string
+  past: string
+}
+
+interface ConfigOptions {
+  colors: ConfigColors
+  radius: string
+  activeHeight: string
+  gap: string
 }
 ```
 

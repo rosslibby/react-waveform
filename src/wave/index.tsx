@@ -18,7 +18,14 @@ export const Waveform = ({
 }: WaveProps) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const { options: ctxOptions } = useContext(waveformCtx)
-  const configOptions = { ...ctxOptions, ...options }
+  const configOptions = {
+    ...ctxOptions,
+    ...options,
+    colors: {
+      ...ctxOptions.colors,
+      ...options.colors,
+    },
+  }
   const {
     activeIndex,
     duration,
