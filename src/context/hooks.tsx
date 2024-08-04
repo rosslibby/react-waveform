@@ -2,30 +2,30 @@ import {
   useCallback,
   useContext,
 } from 'react'
-import { AudioSample, PlayState } from '../types'
+import { AudioTrack, PlayState } from '../types'
 import { waveformCtx } from '.'
 
 export const useWaveform = () => {
-  const { current, loading, metadata, playState, samples, _: {
+  const { current, loading, metadata, playState, tracks, _: {
     setCurrent,
     setLoading,
     setPlayState,
-    setSamples,
+    setTracks,
   } } = useContext(waveformCtx)
 
-  const loadSamples = useCallback((
-    samples: AudioSample[],
-    reset: boolean = false, // load only passed samples, as opposed
-                            // to appending to existing samples
+  const loadTracks = useCallback((
+    tracks: AudioTrack[],
+    reset: boolean = false, // load only passed tracks, as opposed
+                            // to appending to existing tracks
   ) => {
     if (!loading) {
       setLoading(true)
 
       if (reset) {
-        setSamples(samples)
+        setTracks(tracks)
       } else {
-        setSamples((prev: AudioSample[]) => [...prev, ...samples]
-          .reduce((acc: AudioSample[], curr: AudioSample) => {
+        setTracks((prev: AudioTrack[]) => [...prev, ...tracks]
+          .reduce((acc: AudioTrack[], curr: AudioTrack) => {
           // dedupe
           if (!acc.find(item => item.id === curr.id)) {
             return [...acc, curr]
@@ -35,7 +35,7 @@ export const useWaveform = () => {
       }
       setLoading(false)
     }
-  }, [loading, setLoading, setSamples])
+  }, [loading, setLoading, setTracks])
 
   const armTrack = useCallback((id: number | string) => {
     if (playState.id === id) {
@@ -44,16 +44,16 @@ export const useWaveform = () => {
         playing: !prev.playing,
       }))
     }
-    const newCurrent = samples.find((sample) => sample.id === id) || null
+    const newCurrent = tracks.find((track) => track.id === id) || null
     setCurrent(newCurrent)
-  }, [playState, samples, setCurrent, setPlayState])
+  }, [playState, tracks, setCurrent, setPlayState])
 
   return {
     armTrack,
     current,
     loading,
-    loadSamples,
+    loadTracks,
     metadata,
-    samples,
+    tracks,
   }
 }

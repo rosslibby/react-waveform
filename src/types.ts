@@ -1,11 +1,13 @@
 import { ReactNode } from 'react'
 
-export type ConfigOptions = {
-  colors: {
-    default: string
-    active: string
-    past: string
-  }
+export type ConfigColors = {
+  default: string
+  active: string
+  past: string
+}
+
+export interface ConfigOptions {
+  colors: ConfigColors
   radius: string
   activeHeight: string
   gap: string
@@ -20,7 +22,7 @@ export type ContextFunctions = {
   [key: string]: Function
 }
 
-export interface AudioSample {
+export interface AudioTrack {
   id: number | string
   src: string
 }
@@ -43,8 +45,8 @@ export interface WaveformContext {
   options: ConfigOptions
   playState: PlayState
   loading: boolean
-  samples: AudioSample[]
-  current: AudioSample | null
+  tracks: AudioTrack[]
+  current: AudioTrack | null
   metadata: Metadata
   _: ContextFunctions
 }

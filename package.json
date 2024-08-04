@@ -1,8 +1,8 @@
 {
-  "name": "react-waveform-visualizer",
-  "version": "0.0.11",
+  "name": "@notross/react-waveform",
+  "version": "0.0.1",
   "main": "dist/index.js",
-	"types": "./dist/index.d.ts",
+  "types": "./dist/index.d.ts",
   "license": "MIT",
   "author": {
     "name": "Ross Libby",
@@ -19,15 +19,18 @@
     "lint": "tsc"
   },
   "devDependencies": {
+    "@types/node": "^22.1.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.40",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "tsup": "^8.2.4",
     "typescript": "^5.5.4"
   },
   "peerDependencies": {
-    "@types/react": ">=18",
-    "@types/react-dom": ">=18",
-    "react": ">=18",
-    "react-dom": ">=18"
+    "react": "^16.9.0 || ^17 || ^18",
+    "react-dom": "^16.9.0 || ^17 || ^18"
   }
 }
