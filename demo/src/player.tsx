@@ -12,7 +12,7 @@ export const Player = () => {
           colors: {
             active: '#9ad0ffc4',
             default: '#0b0c0e30',
-            past: '#7aa7ff40',
+            past: '#8edfff91',
           },
           activeHeight: '20%',
         }}

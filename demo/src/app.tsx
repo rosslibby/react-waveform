@@ -1,14 +1,14 @@
 import { useEffect } from 'react'
-import { AudioTrack, useWaveform } from '../../src'
-import trackList from './audio-data.json'
+import { useWaveform } from '../../src'
+import trackList from './local-tracks.json'
 import { Tracks } from './tracks'
 import { Player } from './player'
 
 export default function App() {
-  const { loadTracks, tracks } = useWaveform()
+  const { loadTracks } = useWaveform()
 
   useEffect(() => {
-    loadTracks(trackList as AudioTrack[])
+    loadTracks(trackList, { endpoint: 'http://localhost:8000/media' })
   }, [loadTracks])
 
   return (

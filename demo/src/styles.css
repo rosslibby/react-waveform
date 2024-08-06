@@ -1,60 +1,59 @@
 body {
+  background: linear-gradient(30deg, #3743ff, #37ffb4);
   height: 100vh;
   margin: 0;
   width: 100vw;
-  background: linear-gradient(30deg, #3743ff, #37ffb4);
 }
 
 main {
   box-sizing: border-box;
-  padding: 2.5rem 0;
-  max-height: 100vh;
-  overflow: hidden;
   display: grid;
-  gap: 2.5rem;
-  place-content: center;
+  gap: 4rem;
   grid-template-rows: calc(80% - 1.25rem) calc(20% - 1.25rem);
+  height: 100vh;
+  overflow: hidden;
+  padding: 5rem 0;
+  place-content: center;
 }
 
 .player {
-  width: 100%;
-  height: 100%;
+  backdrop-filter: hue-rotate(346deg);
   background-color: #6871ff91;
   border-radius: 10px;
-  padding: 1.25rem;
   box-sizing: border-box;
+  height: 100%;
   outline: 4px dashed #68ffc91f;
-  backdrop-filter: hue-rotate(346deg);
+  padding: 1.25rem;
+  width: 100%;
 }
 
 .player h2 {
-  text-align: center;
-  margin: 0;
-  font-family: system-ui;
-  font-weight: 200;
-  color: #ffffff30;
-  font-size: 1.375rem;
-  height: 100%;
-  display: flex;
   align-items: center;
+  color: #ffffff30;
+  display: flex;
+  font-family: system-ui;
+  font-size: 1.375rem;
+  font-weight: 200;
+  height: 100%;
   justify-content: center;
+  margin: 0;
+  text-align: center;
 }
 
 .track-list {
   background-color: #0c1015;
+  border-radius: 0.625rem;
+  box-shadow: 7px 14px 25px 8px #00000063;
   display: grid;
   gap: 0.5rem;
   grid-auto-flow: row;
   grid-auto-rows: 7rem;
-  width: 26rem;
-  box-shadow: 7px 14px 25px 8px #00000063;
-  padding: 1.25rem 2.5rem;
-  margin: 2.5rem;
-  border-radius: 0.625rem;
   outline: 13px solid #00000024;
   overflow: scroll;
-  -ms-overflow-style: none;
+  padding: 1.25rem 0;
   scrollbar-width: none;
+  width: 31rem;
+  -ms-overflow-style: none;
 }
 
 .track-list::-webkit-scrollbar {
@@ -63,52 +62,112 @@ main {
 
 .track {
   align-items: center;
+  border-bottom: 2px solid #000000;
+  box-shadow: 0 5px 0 -2px #111623;
   box-sizing: border-box;
   display: grid;
-  height: 100%;
   gap: 1rem;
   grid-template-columns: 2fr 10fr;
-  width: 26rem;
+  height: 100%;
+  padding: 0 2.5rem;
+  width: 100%;
+}
+
+.track:last-child {
+  border-bottom: none;
+  box-shadow: none;
 }
 
 .track button {
-  width: 50px;
+  aspect-ratio: 1;
   background: linear-gradient(90deg, #58f4ff, #6871ff);
+  border-radius: 50%;
   box-shadow: 4px 3px 0 -1px #030406;
+  box-sizing: border-box;
   border: none;
-  outline: 4px solid #ffffff12;
-  background-color: #6871ff;
   color: #ffffff;
   display: grid;
-  border-radius: 50%;
-  aspect-ratio: 1;
+  outline: 4px solid #ffffff12;
   padding: 0;
-  box-sizing: border-box;
-  transition: all .25s ease;
+  transform: rotate(0deg);
+  transition: all .625s ease;
+  width: 50px;
 }
 
 .track button:hover {
+  animation: button-hover 8s infinite linear;
+  box-shadow: 0 0 18px 5px #423bff45;
   cursor: pointer;
   outline-color: #626aff63;
   outline-width: 3px;
   transform: scale(1.075);
-  box-shadow: 0 0 7px 8px #626aff33;
 }
 
 .track button .inner {
+  align-items: center;
+  border: 4px inset #6871ff7d;
+  border-radius: 50%;
+  box-sizing: border-box;
+  color: white;
+  display: flex;
+  font-size: 20px;
   height: 100%;
   justify-content: center;
-  align-items: center;
-  display: flex;
-  border-radius: 50%;
-  color: white;
-  border: 4px inset #6871ff7d;
-  width: 100%;
-  box-sizing: border-box;
-  font-size: 20px;
   text-shadow: 0px 0 4px white;
+  width: 100%;
 }
 
 .track button .inner > .icon {
-  transform: scaleX(1.0825) translateX(2px);
+  display: grid;
+  height: 100%;
+  place-content: center;
+  text-indent: 2px;
+  transform: rotate(0deg) scaleX(1.0825);
+  width: 100%;
+}
+
+.icon--pause {
+  font-size: 28px;
+  padding-top: 2px;
+}
+
+.track button:hover .inner > .icon {
+  animation: button-inner-antirotate 8s infinite linear;
+}
+
+@keyframes button-hover {
+  0% {
+    box-shadow: 4px 3px 0 -1px #030406;
+    transform: scale(1) rotate(0deg);
+  }
+  8% {
+    box-shadow: 0 0 14px 2px #423bff45;
+    transform: scale(1.075) rotate(28.8deg);
+  }
+  25% {
+    box-shadow: 0 0 22px 8px #413bff66;
+  }
+  50% {
+    box-shadow: 0 0 14px 2px #423bff45;
+  }
+  75% {
+    box-shadow: 0 0 22px 8px #413bff66;
+  }
+  92% {
+    box-shadow: 0 0 14px 2px #423bff45;
+    transform: scale(1.075) rotate(331.2deg);
+  }
+  100% {
+    box-shadow: 4px 3px 0 -1px #030406;
+    transform: scale(1) rotate(360deg);
+  }
+}
+
+@keyframes button-inner-antirotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
 }
