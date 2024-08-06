@@ -1,11 +1,11 @@
-The `react-waveform-visualizer` package has been moved to [@notross/react-waveform](https://npmjs.com/packages/@notross/react-waveform). This one will not continue to be maintained.
->These packages are currently identical as of **August 6, 2024**, but the version numbers are different. `react-waveform-visualizer@0.0.15` and `@notross/react-waveform@0.0.12` are equivalent. The [Github repository](https://github.com/rosslibby/react-waveform) remains the same.
+The `react-waveform-visualizer` package has been moved to [@notross/react-waveform](https://npmjs.com/package/@notross/react-waveform). This one will not continue to be maintained.
+>These packages are currently identical as of **August 6, 2024**, but the version numbers are different. `react-waveform-visualizer@0.0.16` and `@notross/react-waveform@0.0.12` are equivalent. The [Github repository](https://github.com/rosslibby/react-waveform) remains the same.
 
-### This package has been deprecated in favor of [@notross/react-waveform](https://npmjs.com/packages/@notross/react-waveform). Exact same package, newer more exciting (or boring or whatever) name!
+### This package has been deprecated in favor of [@notross/react-waveform](https://npmjs.com/package/@notross/react-waveform). Exact same package, newer more exciting (or boring or whatever) name!
 
 ## Switching from `react-waveform-visualizer` to `@notross/react-waveform`:
 
-### First, install [`@notross/react-waveform`](https://npmjs.com/packages/@notross/react-waveform)
+### First, install [`@notross/react-waveform`](https://npmjs.com/package/@notross/react-waveform)
 npm                               | yarn
 --------------------------------- | ------------------------------------ |
 `npm i @notross/react-waveform`   | `yarn add @notross/react-waveform`
@@ -74,7 +74,7 @@ interface ConfigOptions {
 ## WaveformProvider
 ```tsx
 import React from 'react'
-import { WaveformProvider } from 'react-waveform-visuzalizer'
+import { WaveformProvider } from 'react-waveform-visualizer'
 
 export default function App({ children }: {
   children: React.ReactNode,
