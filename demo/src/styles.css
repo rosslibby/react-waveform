@@ -1,0 +1,114 @@
+body {
+  height: 100vh;
+  margin: 0;
+  width: 100vw;
+  background: linear-gradient(30deg, #3743ff, #37ffb4);
+}
+
+main {
+  box-sizing: border-box;
+  padding: 2.5rem 0;
+  max-height: 100vh;
+  overflow: hidden;
+  display: grid;
+  gap: 2.5rem;
+  place-content: center;
+  grid-template-rows: calc(80% - 1.25rem) calc(20% - 1.25rem);
+}
+
+.player {
+  width: 100%;
+  height: 100%;
+  background-color: #6871ff91;
+  border-radius: 10px;
+  padding: 1.25rem;
+  box-sizing: border-box;
+  outline: 4px dashed #68ffc91f;
+  backdrop-filter: hue-rotate(346deg);
+}
+
+.player h2 {
+  text-align: center;
+  margin: 0;
+  font-family: system-ui;
+  font-weight: 200;
+  color: #ffffff30;
+  font-size: 1.375rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.track-list {
+  background-color: #0c1015;
+  display: grid;
+  gap: 0.5rem;
+  grid-auto-flow: row;
+  grid-auto-rows: 7rem;
+  width: 26rem;
+  box-shadow: 7px 14px 25px 8px #00000063;
+  padding: 1.25rem 2.5rem;
+  margin: 2.5rem;
+  border-radius: 0.625rem;
+  outline: 13px solid #00000024;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.track-list::-webkit-scrollbar {
+  display: none;
+}
+
+.track {
+  align-items: center;
+  box-sizing: border-box;
+  display: grid;
+  height: 100%;
+  gap: 1rem;
+  grid-template-columns: 2fr 10fr;
+  width: 26rem;
+}
+
+.track button {
+  width: 50px;
+  background: linear-gradient(90deg, #58f4ff, #6871ff);
+  box-shadow: 4px 3px 0 -1px #030406;
+  border: none;
+  outline: 4px solid #ffffff12;
+  background-color: #6871ff;
+  color: #ffffff;
+  display: grid;
+  border-radius: 50%;
+  aspect-ratio: 1;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all .25s ease;
+}
+
+.track button:hover {
+  cursor: pointer;
+  outline-color: #626aff63;
+  outline-width: 3px;
+  transform: scale(1.075);
+  box-shadow: 0 0 7px 8px #626aff33;
+}
+
+.track button .inner {
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border-radius: 50%;
+  color: white;
+  border: 4px inset #6871ff7d;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 20px;
+  text-shadow: 0px 0 4px white;
+}
+
+.track button .inner > .icon {
+  transform: scaleX(1.0825) translateX(2px);
+}
