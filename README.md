@@ -335,7 +335,7 @@ import { useEffect } from 'react';
 import { useWaveform, AudioTrack, Waveform } from '@notross/react-waveform';
 
 // import audio tracks
-import audioTracks from './track-data.json'
+import audioTracks from './audio-tracks.json'
 
 function TrackLibrary() {
   const { armTrack, current, loadTracks, tracks } = useWaveform();
