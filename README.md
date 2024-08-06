@@ -2,7 +2,7 @@
 
 npm                               | yarn
 --------------------------------- | ------------------------------------ |
-`npm i react-waveform-visualizer` | `yarn add react-waveform-visualizer`
+`npm i @notross/react-waveform` | `yarn add @notross/react-waveform`
 
 <br />
 
@@ -39,7 +39,7 @@ interface ConfigOptions {
 ## WaveformProvider
 ```tsx
 import React from 'react'
-import { WaveformProvider } from 'react-waveform-visuzalizer'
+import { WaveformProvider } from '@notross/react-waveform'
 
 export default function App({ children }: {
   children: React.ReactNode,
@@ -55,7 +55,7 @@ export default function App({ children }: {
 `WaveformProvider` takes an optional argument of `options: ConfigOptions`. These options will apply to every `<Waveform />` component that _does not_ have its own `ConfigOptions` set.
 ```tsx
 import React from 'react'
-import { WaveformProvider, ConfigOptions } from 'react-waveform-visualizer'
+import { WaveformProvider, ConfigOptions } from '@notross/react-waveform'
 
 const options: ConfigOptions = {
   colors: {
@@ -80,7 +80,7 @@ export default function App(props: React.ComponentProps) {
 ## Waveform
 ```tsx
 // audio-player.tsx
-import { AudioTrack, Waveform } from 'react-waveform-visualizer'
+import { AudioTrack, Waveform } from '@notross/react-waveform'
 
 export function AudioPlayer({ track }: {
   track: AudioTrack
@@ -104,7 +104,7 @@ argument | description | type
 
 ```tsx
 // custom-audio-player.tsx
-import { AudioTrack, ConfigOptions, Waveform } from 'react-waveform-visualizer'
+import { AudioTrack, ConfigOptions, Waveform } from '@notross/react-waveform'
 
 export function AudioPlayer({ track, activeColor, gap }: {
   activeColor: string,
@@ -162,7 +162,7 @@ key | description | type
 
 ```tsx
 import { useEffect } from 'react'
-import { useWaveform, AudioTrack, Waveform } from 'react-waveform-visualizer'
+import { useWaveform, AudioTrack, Waveform } from '@notross/react-waveform'
 
 // Audio track URLs
 const TRACK_LIST = [
@@ -199,7 +199,7 @@ argument | description | type
 
 ```tsx
 // play-button.tsx
-import { useWaveform } from 'react-waveform-visualizer'
+import { useWaveform } from '@notross/react-waveform'
 
 export function PlayButton({ id }: { id: string }) {
   const { armTrack } = useWaveform()
@@ -214,7 +214,7 @@ export function PlayButton({ id }: { id: string }) {
 `current` is the currently armed/playing track. If no track is armed, `current` will evaluate to `null`.
 
 ```tsx
-import { useWaveform } from 'react-waveform-visualizer'
+import { useWaveform } from '@notross/react-waveform'
 import { AudioPlayer } from './audio-player.tsx'
 
 export function AudioPlayer() {
@@ -242,7 +242,7 @@ export function AudioPlayer() {
 `tracks` is an array of all loaded tracks. tracks are of type `AudioTrack`.
 
 ```tsx
-import { useWaveform } from 'react-waveform-visualizer'
+import { useWaveform } from '@notross/react-waveform'
 import { AudioPlayer } from './audio-player'
 import { PlayButton } from './play-button'
 
@@ -283,7 +283,7 @@ The `WaveformProvider` maintains the state for all loaded audio tracks, as well 
 First, import the `WaveformProvider` to the root of your application:
 
 ```tsx
-import { WaveformProvider } from 'react-waveform-visualizer';
+import { WaveformProvider } from '@notross/react-waveform';
 ````
 
 Next, wrap the provider around the your root component, so that all child components will have access to the `WaveformProvider` state:
@@ -326,7 +326,7 @@ Finally, load tracks, arm tracks, and render waveforms using the `useWaveform` h
 
 ```tsx
 import { useEffect } from 'react';
-import { useWaveform, AudioTrack, Waveform } from 'react-waveform-visualizer';
+import { useWaveform, AudioTrack, Waveform } from '@notross/react-waveform';
 
 // import audio tracks
 import audioTracks from './track-data.json'
