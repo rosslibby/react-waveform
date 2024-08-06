@@ -1,6 +1,6 @@
 {
-  "name": "@notross/react-waveform",
-  "version": "0.0.11",
+  "name": "react-waveform-visualizer",
+  "version": "0.0.15",
   "main": "dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",

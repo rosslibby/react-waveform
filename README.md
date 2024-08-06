@@ -1,3 +1,38 @@
+The `react-waveform-visualizer` package has been moved to [@notross/react-waveform](https://npmjs.com/packages/@notross/react-waveform). This one will not continue to be maintained.
+>These packages are currently identical as of **August 6, 2024**, but the version numbers are different. `react-waveform-visualizer@0.0.15` and `@notross/react-waveform@0.0.12` are equivalent. The [Github repository](https://github.com/rosslibby/react-waveform) remains the same.
+
+### This package has been deprecated in favor of [@notross/react-waveform](https://npmjs.com/packages/@notross/react-waveform). Exact same package, newer more exciting (or boring or whatever) name!
+
+## Switching from `react-waveform-visualizer` to `@notross/react-waveform`:
+
+### First, install [`@notross/react-waveform`](https://npmjs.com/packages/@notross/react-waveform)
+npm                               | yarn
+--------------------------------- | ------------------------------------ |
+`npm i @notross/react-waveform`   | `yarn add @notross/react-waveform`
+
+### Next, remove `react-waveform-visualizer`
+
+npm                               | yarn
+--------------------------------- | ------------------------------------ |
+`npm uninstall react-waveform-visualizer`   | `yarn remove react-waveform-visualizer`
+
+### Finally, change all your imports from `react-waveform-visualizer` to `@notross/react-waveform`
+
+```tsx
+import { WaveformProvider } from '@notross/react-waveform'
+```
+```tsx
+import { Waveform, useWaveform } from '@notross/react-waveform'
+```
+<br />
+
+...you get it. Same exact project, same repo, new name.
+
+<br />
+
+---
+<br />
+
 # Installation
 
 npm                               | yarn
