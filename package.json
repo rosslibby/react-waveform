@@ -1,8 +1,10 @@
 {
   "name": "@notross/react-waveform",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "main": "dist/index.js",
   "types": "./dist/index.d.ts",
+  "keywords": ["react", "waveform", "audio", "visualizer", "player", "music"],
+  "description": "A React component for rendering audio waveforms, with support for multiple audio sources and custom styling.",
   "license": "MIT",
   "author": {
     "name": "Ross Libby",

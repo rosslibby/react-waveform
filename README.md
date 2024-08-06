@@ -102,6 +102,8 @@ argument | description | type
 `columns` | Specifies the number of segments in the rendered audio wave. Default value is `60` | `number`
 `options` | Optional styling specifications. These options will override any default options or options set in the `WaveformProvider` | `ConfigOptions`
 
+<br />
+
 ```tsx
 // custom-audio-player.tsx
 import { AudioTrack, ConfigOptions, Waveform } from '@notross/react-waveform'
@@ -160,6 +162,8 @@ key | description | type
 `id` | The `id` _must be unique_, as it is used to synchronize waveforms throughout the application (e.g. if a track's waveform is playing in a list of tracks **and** is being displayed simultaneously in a separate component) | `string` or `number`
 `src` | The `src` specifies the location of the audio file. | `string`
 
+<br />
+
 ```tsx
 import { useEffect } from 'react'
 import { useWaveform, AudioTrack, Waveform } from '@notross/react-waveform'
@@ -196,6 +200,8 @@ The `armTrack` function takes only one argument:
 argument | description | type
 --- | --- | ---
 `id` | The `id` comes from the `tracks` array, specifying a _loaded_ track for playback and visualization | `string` or `number`
+
+<br />
 
 ```tsx
 // play-button.tsx
@@ -300,7 +306,7 @@ Any child component of `WaveformProvider` can utilize the `useWaveform` hook and
 
 Finally, load tracks, arm tracks, and render waveforms using the `useWaveform` hook and the `<Waveform />` component:
 
-```json
+```tsx
 // audio-tracks.json
 
 [
