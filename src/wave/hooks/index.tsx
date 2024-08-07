@@ -31,6 +31,7 @@ export const useWave = (track: AudioTrack, count: number = 60) => {
 
   const updateMetadata = useCallback((duration: number) => {
     setMetadata((prev: Metadata) => ({
+      ...prev,
       ms: 0,
       seconds: 0,
       minutes: 0,
@@ -95,7 +96,11 @@ export const usePlayerControls = () => {
         ...(pause ? { playing: false } : {}),
         completed: elapsed === duration,
       }))
-    }, [setPlayState]
+      setMetadata((prev: Metadata) => ({
+        ...prev,
+        playing: elapsed < duration && !pause,
+      }))
+    }, [setMetadata, setPlayState]
   )
 
   const playing = useCallback((currentTime: number) => {
@@ -108,6 +113,7 @@ export const usePlayerControls = () => {
     }))
     setMetadata((prev: Metadata) => ({
       ...prev,
+      playing: true,
       ms,
       seconds: Math.floor(ms / 1000),
       minutes: Math.floor(ms / 60000),

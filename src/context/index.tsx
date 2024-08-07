@@ -17,6 +17,8 @@ const initialPlayState: PlayState = {
 }
 
 const initialMetadata: Metadata = {
+  playing: false,
+  id: '',
   ms: 0,
   seconds: 0,
   minutes: 0,
@@ -61,6 +63,11 @@ export function WaveformProvider({
         ...initialPlayState,
         playing: true,
         id: current.id,
+      })
+      setMetadata({
+        ...initialMetadata,
+        id: current.id,
+        playing: true,
       })
     }
   }, [current, setMetadata, setPlayState])

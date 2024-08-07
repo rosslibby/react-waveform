@@ -71,3 +71,30 @@ export const generateSegments = async (
     return { duration: 0, segments: [] }
   }
 }
+
+// JS implementation of Java's String.hashCode()
+export const hashCode = (filename: string, index: number): string => {
+  // numbers [0-9], uppercase letters [A-Z], lowercase letters [a-z]
+  const characterBounds: [number, number][] = [[48,57],[65,90],[97,122]]
+  const [start, end] = characterBounds[Math.floor(Math.random() * characterBounds.length)]
+  const numOptions = end - start + 1
+  const hashCode: number = filename.split('')
+    .reduce(
+      (hash: number, char: string) => {
+        return 0 | (31 * hash + char.charCodeAt(0))
+      }, 0);
+  const hashString = (new Date().getTime() * index) + hashCode.toString().split('')
+    .reduce(
+      (acc: string, char: string) => {
+        const arr: string[] = []
+        for (let i = 0; i < Number(char); i++) {
+          const charIndex = Math.floor(Math.random() * numOptions) + start
+          arr.push(String.fromCharCode(charIndex))
+        }
+
+        return acc + arr.join('')
+      }, '')
+
+  return hashString
+}
+
