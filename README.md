@@ -1,3 +1,19 @@
+# To run the demo:
+1. Clone this repository:
+    - **SSH:** `git clone git@github.com/rosslibby/react-waveform.git` 
+    - **HTTPS:** `git clone https://github.com/rosslibby/react-waveform`
+2. Navigate to the cloned project on your local machine: `cd ./react-waveform/`
+3. Install dependencies:
+    - **NPM:** `npm i`
+    - **Yarn:** `yarn`
+4. Start the webpack server:
+    - **NPM:** `npm run dev`
+    - **Yarn:** `yarn dev`
+
+>\*Note: the included `./demo/src/audio-data.json` contains sources that will fail on your localhost due to CORS. Feel free to modify sources with your own tracks, whether hosted locally or online. I built my own small Express server to host local files; you can see an example at the end of the README.
+
+<br />
+
 # Installation
 
 npm                               | yarn
@@ -377,4 +393,55 @@ function TrackLibrary() {
     </>
   );
 }
+```
+
+# Example `localhost` media server
+
+
+```shell
+# File structure
+.
+├── index.ts # The application
+├── media # My local audio files
+│   ├── Aubit - Awake Dry Gtr Loop 12 (135bpm) G#maj.wav
+│   ├── Aubit - Awake Dry Gtr Loop 47 (75bpm) Dmaj.wav
+│   ├── Aubit - Awake Dry Gtr Loop 50 (75bpm) Bmaj.wav
+│   ├── Aubit - Awake Dry Gtr Loop 8 (135bpm) C#maj.wav
+│   ├── Aubit - Ultrallenium Guitars V2 Loop 10 (148bpm) A#maj Dry.wav
+│   └── Aubit - Ultrallenium Guitars V2 Loop 13 (160bpm) Emaj Dry.wav
+├── package.json
+└── tsconfig.json
+```
+
+Dependencies:
+```shell
+# dependencies
+
+yarn add cors express
+yarn add -D @types/cors @types/express
+```
+
+```ts
+// index.ts
+
+import express, { Request, Response } from 'express';
+import { dirname, join } from 'path';
+import cors from 'cors';
+
+const app = express();
+const port = 8000;
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static('media'));
+app.use(express.json());
+app.use(cors())
+
+app.get('/media/:filename', (req: Request, res: Response) => {
+  return res.sendFile(join(__dirname, 'media', req.params.filename));
+});
+
+app.listen(port, () => {
+  console.log(`⚡️ Server is running on port ${port}`);
+});
+
 ```

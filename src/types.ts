@@ -35,6 +35,8 @@ export interface AudioTrack {
 }
 
 export interface Metadata {
+  playing: boolean
+  id: number | string
   ms: number
   seconds: number
   minutes: number
