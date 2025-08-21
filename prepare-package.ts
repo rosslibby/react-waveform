@@ -31,13 +31,12 @@ const readme = fs.readFileSync(path.join(process.cwd(), 'README.md'), 'utf-8');
 })();
 
 function cleanPkg(config: any): any {
-  const { name, version, main, module, types, exports, scripts, devDependencies, ...rest } = config;
+  const { name, version, main, types, exports, scripts, devDependencies, ...rest } = config;
 
   return {
     name,
     version,
     main: main.replace(/dist\//, ''),
-    module: module.replace(/dist\//, ''),
     types: types.replace(/dist\//, ''),
     ...rest,
     exports: {
@@ -45,7 +44,6 @@ function cleanPkg(config: any): any {
       '.': {
         ...exports['.'],
         import: exports['.'].import.replace(/dist\//, ''),
-        require: exports['.'].require.replace(/dist\//, ''),
         types: exports['.'].types.replace(/dist\//, ''),
       },
     },
