@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/rosslibby/react-waveform"
+    "url": "git+https://github.com/rosslibby/react-waveform.git"
   },
   "scripts": {
     "demo": "node demo/dist/server/index.js",
