@@ -82,7 +82,7 @@ function getRouteName(paths: string[], url: string): string | null {
 }
 
 function getAudioTracks(req: http.IncomingMessage, res: http.ServerResponse) {
-  const filepath = path.join(process.cwd(), 'samples');
+  const filepath = path.join(process.cwd(), 'demo', 'server', 'samples');
   const tracks = fs.readdirSync(filepath, { encoding: 'utf-8' });
 
   res.writeHead(200, {
@@ -95,7 +95,7 @@ function getAudioTracks(req: http.IncomingMessage, res: http.ServerResponse) {
 function getAudioTrack(req: http.IncomingMessage, res: http.ServerResponse) {
   const urlTrackName = req.url?.split('/').pop() as string;
   const trackName = decodeURIComponent(urlTrackName);
-  const filepath = path.join(process.cwd(), 'samples', trackName);
+  const filepath = path.join(process.cwd(), 'demo', 'server', 'samples', trackName);
   const audioBuffer = fs.readFileSync(filepath);
 
   res.writeHead(200, {
@@ -108,5 +108,6 @@ function getAudioTrack(req: http.IncomingMessage, res: http.ServerResponse) {
 }
 
 server.listen(port, hostname, () => {
-  console.log(`⚡️ Listening on port ${port}`);
+  const url = new URL(`http://${hostname}:${port}`);
+  console.log(`🚀 [server] running at ${url.href}`);
 });

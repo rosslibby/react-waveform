@@ -1,28 +1,41 @@
-# To run the demo:
-1. Clone this repository:
-    - **SSH:** `git clone git@github.com/rosslibby/react-waveform.git` 
-    - **HTTPS:** `git clone https://github.com/rosslibby/react-waveform`
-2. Navigate to the cloned project on your local machine: `cd ./react-waveform/`
-3. Install dependencies:
-    - **NPM:** `npm i`
-    - **Yarn:** `yarn`
-4. Start the webpack server:
-    - **NPM:** `npm run dev`
-    - **Yarn:** `yarn dev`
+# @notross/react-waveform
 
->\*Note: the included `./demo/src/audio-data.json` contains sources that will fail on your localhost due to CORS. Feel free to modify sources with your own tracks, whether hosted locally or online. I built my own small Express server to host local files; you can see an example at the end of the README.
+## Installation
+```bash
+# NPM
+npm install @notross/react-waveform
 
-<br />
+# Yarn
+yarn add @notross/react-waveform
+```
 
-# Installation
+## Demo
 
-npm                               | yarn
---------------------------------- | ------------------------------------ |
-`npm i @notross/react-waveform` | `yarn add @notross/react-waveform`
+The demo project has two components: **UI** and **server**:
 
-<br />
+- **UI:** implements the `@notross/react-waveform` components and hooks
+- **server:** hosts sample audio tracks accessible to the UI
 
-# Types
+To run the demo, use the `demo` script to start both the UI and the server:
+```bash
+# NPM
+npm run demo
+```
+
+Your demo will be locally accessible at http://localhost:3000.
+
+By default, the demo server runs locally on port 3030 `http://localhost:3030`.
+
+To run either UI or server individually, specify them in the run script:
+```bash
+# UI
+npm run demo:ui
+
+# Server
+npm run demo:server
+```
+
+## Types
 
 ### AudioTrack
 ```ts

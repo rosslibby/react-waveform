@@ -24,6 +24,9 @@
     "url": "https://github.com/rosslibby/react-waveform"
   },
   "scripts": {
+    "demo:ui": "webpack serve --port 3000",
+    "demo:server": "nodemon --exec ts-node demo/server/index.ts",
+    "demo": "concurrently \"npm run demo:server\" \"npm run demo:ui\"",
     "dev": "webpack serve --port 3000",
     "build": "tsup",
     "lint": "tsc --config tsconfig.json --noEmit"
@@ -33,13 +36,16 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "autoprefixer": "^10.4.20",
+    "concurrently": "^9.2.0",
     "css-loader": "^7.1.2",
     "html-webpack-plugin": "^5.6.0",
     "mini-css-extract-plugin": "^2.9.0",
+    "nodemon": "^3.1.10",
     "postcss": "^8.4.40",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "ts-loader": "^9.5.1",
+    "ts-node": "^10.9.2",
     "tsup": "^8.2.4",
     "typescript": "^5.5.4",
     "webpack": "^5.93.0",
