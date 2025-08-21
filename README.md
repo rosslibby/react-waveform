@@ -22,18 +22,7 @@ To run the demo, use the `demo` script to start both the UI and the server:
 npm run demo
 ```
 
-Your demo will be locally accessible at http://localhost:3000.
-
-By default, the demo server runs locally on port 3030 `http://localhost:3030`.
-
-To run either UI or server individually, specify them in the run script:
-```bash
-# UI
-npm run demo:ui
-
-# Server
-npm run demo:server
-```
+Your demo will be locally accessible at http://localhost:3030.
 
 ## Types
 
