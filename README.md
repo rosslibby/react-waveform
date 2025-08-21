@@ -1,3 +1,5 @@
+# @notross/react-waveform
+
 # To run the demo:
 1. Clone this repository:
     - **SSH:** `git clone git@github.com/rosslibby/react-waveform.git` 
