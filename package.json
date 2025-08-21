@@ -33,12 +33,13 @@
     "demo:build": "npm run demo:build:server && npm run demo:build:ui",
     "dev": "webpack serve --port 3000",
     "build": "tsup",
-    "lint": "tsc --config tsconfig.json --noEmit"
+    "lint": "tsc --config tsconfig.ui.json --noEmit",
+    "prepare": "ts-node prepare-package.ts"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
-    "@types/node": "^22.1.0",
+    "@types/node": "^24.3.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "autoprefixer": "^10.4.20",
@@ -64,5 +65,11 @@
     "react": "^16.9.0 || ^17 || ^18",
     "react-dom": "^16.9.0 || ^17 || ^18"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  }
 }
