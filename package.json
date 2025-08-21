@@ -1,6 +1,6 @@
 {
   "name": "@notross/react-waveform",
-  "version": "0.0.14",
+  "version": "1.0.0",
   "main": "dist/index.js",
   "types": "./dist/index.d.ts",
   "keywords": [
@@ -21,25 +21,40 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/rosslibby/react-waveform"
+    "url": "git+https://github.com/rosslibby/react-waveform.git"
   },
   "scripts": {
+    "demo": "node demo/dist/server/index.js",
+    "demo:ui": "webpack serve --port 3000",
+    "demo:server": "nodemon --exec ts-node demo/server/index.ts",
+    "demo:dev": "concurrently \"npm run demo:server\" \"npm run demo:ui\"",
+    "demo:build:server": "tsc --project tsconfig.server.json",
+    "demo:build:ui": "webpack",
+    "demo:build": "npm run demo:build:server && npm run demo:build:ui",
     "dev": "webpack serve --port 3000",
     "build": "tsup",
-    "lint": "tsc --config tsconfig.json --noEmit"
+    "lint": "tsc --config tsconfig.ui.json --noEmit",
+    "prepare": "ts-node prepare-package.ts"
   },
   "devDependencies": {
-    "@types/node": "^22.1.0",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.3.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "autoprefixer": "^10.4.20",
+    "concurrently": "^9.2.0",
+    "cors": "^2.8.5",
     "css-loader": "^7.1.2",
+    "express": "^5.1.0",
     "html-webpack-plugin": "^5.6.0",
     "mini-css-extract-plugin": "^2.9.0",
+    "nodemon": "^3.1.10",
     "postcss": "^8.4.40",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "ts-loader": "^9.5.1",
+    "ts-node": "^10.9.2",
     "tsup": "^8.2.4",
     "typescript": "^5.5.4",
     "webpack": "^5.93.0",
@@ -49,5 +64,12 @@
   "peerDependencies": {
     "react": "^16.9.0 || ^17 || ^18",
     "react-dom": "^16.9.0 || ^17 || ^18"
+  },
+  "dependencies": {},
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
   }
 }

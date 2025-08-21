@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "rootDir": "demo/server",
+    "outDir": "demo/dist/server",
+    "esModuleInterop": true,
+    "target": "esnext",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "noEmit": false,
+    "resolveJsonModule": true
+  },
+  "include": ["demo/server/**/*.ts"],
+}
