@@ -1,4 +1,5 @@
 # @notross/react-waveform
+[<img src="https://img.shields.io/npm/v/@notross/react-waveform" />](https://npmjs.com/package/@notross/react-waveform)
 
 ## Installation
 ```bash
